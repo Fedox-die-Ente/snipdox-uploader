@@ -1,0 +1,60 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>ovh.fedox.snipdox</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>Snipdox Uploader</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="f3dox@proton.me">Fedox</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description>
+        <![CDATA[
+            <p>Adds a "Upload to Snipdox" action, which postes the selected content onto the Snipdox site.</p>
+            <p>Create a paste:</p>
+            <ol type="1">
+                <li>Select the code snippet to upload</li>
+                <li>Right click on the selection</li>
+                <li>Press "Upload to Snipdox"</li>
+            </ol>
+        ]]>
+    </description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <actions>
+        <action id="ovh.fedox.snipdox.action.UploadToSnipdoxAction"
+                class="ovh.fedox.snipdox.action.UploadToSnipdoxAction" text="Upload to Snipdox"
+                description="Uploads the selected code snippet to Snipdox">
+            <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="CopyAsPlainText"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl S"/>
+        </action>
+    </actions>
+
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+
+        <notificationGroup
+                id="Snipdox Uploader"
+                displayType="BALLOON"
+                key="notification.group.snipdox"/>
+        
+        <applicationConfigurable
+                parentId="tools"
+                instance="ovh.fedox.snipdox.settings.SnipdoxSettingsConfigurable"
+                id="ovh.fedox.snipdox.settings.SnipdoxSettingsConfigurable"
+                displayName="Snipdox"/>
+
+        <applicationService
+                serviceImplementation="ovh.fedox.snipdox.settings.SnipdoxSettingsState"/>
+    </extensions>
+</idea-plugin>
