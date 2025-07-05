@@ -27,7 +27,6 @@ clicks.
 3. Click on `Marketplace` tab
 4. Search for "Snipdox Uploader"
 5. Click `Install` and restart IntelliJ IDEA
-6.
 
 ## ⚙️ Setup
 
@@ -125,8 +124,8 @@ The plugin supports automatic language detection for:
 
 # Clone the repository
 
-git clone https://github.com/your-username/snipdox-intellij-plugin.git
-cd snipdox-intellij-plugin
+git clone https://github.com/Fedox-die-Ente/snipdox-uploader.git
+cd snipdox-uploader
 
 # Build the plugin
 
