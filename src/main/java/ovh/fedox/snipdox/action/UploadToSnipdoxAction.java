@@ -471,7 +471,6 @@ public class UploadToSnipdoxAction extends DumbAwareAction {
 				}
 			}
 
-			// Alternative: sucht nach "paste_url" oder ähnlichem
 			urlStart = jsonResponse.indexOf("\"paste_url\":");
 			if (urlStart != -1) {
 				urlStart = jsonResponse.indexOf("\"", urlStart + 12);
